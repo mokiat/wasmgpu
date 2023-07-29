@@ -110,3 +110,233 @@ const (
 	GPUBufferUsageFlagsIndirect     GPUBufferUsageFlags = 0x0100
 	GPUBufferUsageFlagsQueryResolve GPUBufferUsageFlags = 0x0200
 )
+
+// GPUTextureFormat as described:
+// https://gpuweb.github.io/gpuweb/#enumdef-gputextureformat
+type GPUTextureFormat string
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUTextureFormat) ToJS() any {
+	return string(g)
+}
+
+const (
+	GPUTextureFormatR8Unorm GPUTextureFormat = "r8unorm"
+	GPUTextureFormatR8Snorm GPUTextureFormat = "r8snorm"
+	GPUTextureFormatR8Uint  GPUTextureFormat = "r8uint"
+	GPUTextureFormatR8Sint  GPUTextureFormat = "r8sint"
+
+	GPUTextureFormatR16Uint  GPUTextureFormat = "r16uint"
+	GPUTextureFormatR16Sint  GPUTextureFormat = "r16sint"
+	GPUTextureFormatR16float GPUTextureFormat = "r16float"
+	GPUTextureFormatRG8Unorm GPUTextureFormat = "rg8unorm"
+	GPUTextureFormatRG8Snorm GPUTextureFormat = "rg8snorm"
+	GPUTextureFormatRG8Uint  GPUTextureFormat = "rg8uint"
+	GPUTextureFormatRG8Sint  GPUTextureFormat = "rg8sint"
+
+	GPUTextureFormatR32Uint        GPUTextureFormat = "r32uint"
+	GPUTextureFormatR32Sint        GPUTextureFormat = "r32sint"
+	GPUTextureFormatR32float       GPUTextureFormat = "r32float"
+	GPUTextureFormatRG16Uint       GPUTextureFormat = "rg16uint"
+	GPUTextureFormatRG16Sint       GPUTextureFormat = "rg16sint"
+	GPUTextureFormatRG16float      GPUTextureFormat = "rg16float"
+	GPUTextureFormatRGBA8Unorm     GPUTextureFormat = "rgba8unorm"
+	GPUTextureFormatRGBA8UnormSRGB GPUTextureFormat = "rgba8unorm-srgb"
+	GPUTextureFormatRGBA8Snorm     GPUTextureFormat = "rgba8snorm"
+	GPUTextureFormatRGBA8Uint      GPUTextureFormat = "rgba8uint"
+	GPUTextureFormatRGBA8Sint      GPUTextureFormat = "rgba8sint"
+	GPUTextureFormatBGRA8Unorm     GPUTextureFormat = "bgra8unorm"
+	GPUTextureFormatBGRA8UnormSRGB GPUTextureFormat = "bgra8unorm-srgb"
+	GPUTextureFormatRGB9E5UFloat   GPUTextureFormat = "rgb9e5ufloat"
+	GPUTextureFormatRGB10A2Uint    GPUTextureFormat = "rgb10a2uint"
+	GPUTextureFormatRGB10A2Unorm   GPUTextureFormat = "rgb10a2unorm"
+	GPUTextureFormatRG11B10Ufloat  GPUTextureFormat = "rg11b10ufloat"
+
+	GPUTextureFormatRG32Uint    GPUTextureFormat = "rg32uint"
+	GPUTextureFormatRG32Sint    GPUTextureFormat = "rg32sint"
+	GPUTextureFormatRG32Float   GPUTextureFormat = "rg32float"
+	GPUTextureFormatRGBA16Uint  GPUTextureFormat = "rgba16uint"
+	GPUTextureFormatRGBA16Sint  GPUTextureFormat = "rgba16sint"
+	GPUTextureFormatRGBA16Float GPUTextureFormat = "rgba16float"
+
+	GPUTextureFormatRGBA32Uint  GPUTextureFormat = "rgba32uint"
+	GPUTextureFormatRGBA32Sint  GPUTextureFormat = "rgba32sint"
+	GPUTextureFormatRGBA32Float GPUTextureFormat = "rgba32float"
+
+	GPUTextureFormatStencil8            GPUTextureFormat = "stencil8"
+	GPUTextureFormatDepth16Unorm        GPUTextureFormat = "depth16unorm"
+	GPUTextureFormatDepth24Plus         GPUTextureFormat = "depth24plus"
+	GPUTextureFormatDepth24PlusStencil8 GPUTextureFormat = "depth24plus-stencil8"
+	GPUTextureFormatDepth32Float        GPUTextureFormat = "depth32float"
+
+	GPUTextureFormatDepth32FloatStencil8 GPUTextureFormat = "depth32float-stencil8"
+)
+
+// GPUBlendOperation as described:
+// https://gpuweb.github.io/gpuweb/#enumdef-gpublendoperation
+type GPUBlendOperation string
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUBlendOperation) ToJS() any {
+	return string(g)
+}
+
+const (
+	GPUBlendOperationAdd             GPUBlendOperation = "add"
+	GPUBlendOperationSubtract        GPUBlendOperation = "subtract"
+	GPUBlendOperationReverseSubtract GPUBlendOperation = "reverse-subtract"
+	GPUBlendOperationMin             GPUBlendOperation = "min"
+	GPUBlendOperationMax             GPUBlendOperation = "max"
+)
+
+// GPUBlendFactor as described:
+// https://gpuweb.github.io/gpuweb/#enumdef-gpublendfactor
+type GPUBlendFactor string
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUBlendFactor) ToJS() any {
+	return string(g)
+}
+
+const (
+	GPUBlendFactorZero              GPUBlendFactor = "zero"
+	GPUBlendFactorOne               GPUBlendFactor = "one"
+	GPUBlendFactorSrc               GPUBlendFactor = "src"
+	GPUBlendFactorOneMinusSrc       GPUBlendFactor = "one-minus-src"
+	GPUBlendFactorSrcAlpha          GPUBlendFactor = "src-alpha"
+	GPUBlendFactorOneMinusSrcAlpha  GPUBlendFactor = "one-minus-src-alpha"
+	GPUBlendFactorDst               GPUBlendFactor = "dst"
+	GPUBlendFactorOneMinusDst       GPUBlendFactor = "one-minus-dst"
+	GPUBlendFactorDstAlpha          GPUBlendFactor = "dst-alpha"
+	GPUBlendFactorOneMinusDstAlpha  GPUBlendFactor = "one-minus-dst-alpha"
+	GPUBlendFactorSrcAlphaSaturated GPUBlendFactor = "src-alpha-saturated"
+	GPUBlendFactorConstant          GPUBlendFactor = "constant"
+	GPUBlendFactorOneMinusConstant  GPUBlendFactor = "one-minus-constant"
+)
+
+// GPUColorWriteFlags as described:
+// https://gpuweb.github.io/gpuweb/#typedefdef-gpucolorwriteflags
+type GPUColorWriteFlags GPUFlagsConstant
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUColorWriteFlags) ToJS() any {
+	return uint32(g)
+}
+
+const (
+	GPUColorWriteFlagsRed   GPUColorWriteFlags = 0x1
+	GPUColorWriteFlagsGreen GPUColorWriteFlags = 0x2
+	GPUColorWriteFlagsBlue  GPUColorWriteFlags = 0x4
+	GPUColorWriteFlagsAlpha GPUColorWriteFlags = 0x8
+	GPUColorWriteFlagsAll   GPUColorWriteFlags = 0xF
+)
+
+// GPUPrimitiveTopology as described:
+// https://gpuweb.github.io/gpuweb/#enumdef-gpuprimitivetopology
+type GPUPrimitiveTopology string
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUPrimitiveTopology) ToJS() any {
+	return string(g)
+}
+
+const (
+	GPUPrimitiveTopologyPointList     GPUPrimitiveTopology = "point-list"
+	GPUPrimitiveTopologyLineList      GPUPrimitiveTopology = "line-list"
+	GPUPrimitiveTopologyLineStrip     GPUPrimitiveTopology = "line-strip"
+	GPUPrimitiveTopologyTriangleList  GPUPrimitiveTopology = "triangle-list"
+	GPUPrimitiveTopologyTriangleStrip GPUPrimitiveTopology = "triangle-strip"
+)
+
+// GPUIndexFormat as described:
+// https://gpuweb.github.io/gpuweb/#enumdef-gpuindexformat
+type GPUIndexFormat string
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUIndexFormat) ToJS() any {
+	return string(g)
+}
+
+const (
+	GPUIndexFormatUint16 GPUIndexFormat = "uint16"
+	GPUIndexFormatUint32 GPUIndexFormat = "uint32"
+)
+
+// GPUFrontFace as described:
+// https://gpuweb.github.io/gpuweb/#enumdef-gpufrontface
+type GPUFrontFace string
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUFrontFace) ToJS() any {
+	return string(g)
+}
+
+const (
+	GPUFrontFaceCCW GPUFrontFace = "ccw"
+	GPUFrontFaceCW  GPUFrontFace = "cw"
+)
+
+// GPUCullMode as described:
+// https://gpuweb.github.io/gpuweb/#enumdef-gpucullmode
+type GPUCullMode string
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUCullMode) ToJS() any {
+	return string(g)
+}
+
+const (
+	GPUCullModeNone  GPUCullMode = "none"
+	GPUCullModeFront GPUCullMode = "front"
+	GPUCullModeBack  GPUCullMode = "back"
+)
+
+// GPUCompareFunction as described:
+// https://gpuweb.github.io/gpuweb/#enumdef-gpucomparefunction
+type GPUCompareFunction string
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUCompareFunction) ToJS() any {
+	return string(g)
+}
+
+const (
+	GPUCompareFunctionNever        GPUCompareFunction = "never"
+	GPUCompareFunctionLess         GPUCompareFunction = "less"
+	GPUCompareFunctionEqual        GPUCompareFunction = "equal"
+	GPUCompareFunctionLessEqual    GPUCompareFunction = "less-equal"
+	GPUCompareFunctionGreater      GPUCompareFunction = "greater"
+	GPUCompareFunctionNotEqual     GPUCompareFunction = "not-equal"
+	GPUCompareFunctionGreaterEqual GPUCompareFunction = "greater-equal"
+	GPUCompareFunctionAlways       GPUCompareFunction = "always"
+)
+
+// GPUStencilOperation as described:
+// https://gpuweb.github.io/gpuweb/#enumdef-gpustenciloperation
+type GPUStencilOperation string
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUStencilOperation) ToJS() any {
+	return string(g)
+}
+
+const (
+	GPUStencilOperationKeep           GPUStencilOperation = "keep"
+	GPUStencilOperationZero           GPUStencilOperation = "zero"
+	GPUStencilOperationReplace        GPUStencilOperation = "replace"
+	GPUStencilOperationInvert         GPUStencilOperation = "invert"
+	GPUStencilOperationIncrementClamp GPUStencilOperation = "increment-clamp"
+	GPUStencilOperationDecrementClamp GPUStencilOperation = "decrement-clamp"
+	GPUStencilOperationIncrementWrap  GPUStencilOperation = "increment-wrap"
+	GPUStencilOperationDecrementWrap  GPUStencilOperation = "decrement-wrap"
+)

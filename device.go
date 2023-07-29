@@ -57,3 +57,12 @@ func (g GPUDevice) CreateShaderModule(desc GPUShaderModuleDescriptor) GPUShaderM
 		jsValue: jsShader,
 	}
 }
+
+// CreateRenderPipeline as described:
+// https://gpuweb.github.io/gpuweb/#dom-gpudevice-createrenderpipeline
+func (g GPUDevice) CreateRenderPipeline(descriptor GPURenderPipelineDescriptor) GPURenderPipeline {
+	jsPipeline := g.jsValue.Call("createRenderPipeline", descriptor.ToJS())
+	return GPURenderPipeline{
+		jsValue: jsPipeline,
+	}
+}

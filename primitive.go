@@ -64,3 +64,33 @@ type GPUFlagsConstant uint32
 func (g GPUFlagsConstant) ToJS() any {
 	return uint32(g)
 }
+
+// GPUStencilValue as described:
+// https://gpuweb.github.io/gpuweb/#typedefdef-gpustencilvalue
+type GPUStencilValue uint32
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUStencilValue) ToJS() any {
+	return uint32(g)
+}
+
+// GPUDepthBias as described:
+// https://gpuweb.github.io/gpuweb/#typedefdef-gpudepthbias
+type GPUDepthBias int32
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUDepthBias) ToJS() any {
+	return int32(g)
+}
+
+// GPUSampleMask as described:
+// https://gpuweb.github.io/gpuweb/#typedefdef-gpusamplemask
+type GPUSampleMask uint32
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUSampleMask) ToJS() any {
+	return uint32(g)
+}
