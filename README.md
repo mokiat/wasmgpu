@@ -19,3 +19,29 @@ applications are compiled with the `GOOS=js` and `GOARCH=wasm` options.
 
 If you are unfamiliar with how Go and WASM works, then you should have a look at
 the official [WebAssembly with Go documentation](https://github.com/golang/go/wiki/WebAssembly).
+
+## Extending the API
+
+If something is not available in the API, in some cases, you can extend it as a
+workaround by extracting the `js.Value` object using `obj.ToJS().(js.Value)`
+and assigning it to a wrapper structure.
+
+**Example:**
+
+```go
+func ExtendQueue(queue GPUQueue) GPUQueueExt {
+  return GPUQueueExt {
+    GPUQueue: queue,
+    jsValue:  queue.ToJS().(js.Value),
+  }
+}
+
+type GPUQueueExt struct {
+  GPUQueue
+  jsValue js.Value
+}
+
+func (g GPUQueueExt) DoSomethingNew() {
+  g.jsValue.Call("somethingNew")
+}
+```
