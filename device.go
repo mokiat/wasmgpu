@@ -24,8 +24,8 @@ func (g GPUDevice) ToJS() any {
 
 // Queue as described:
 // https://gpuweb.github.io/gpuweb/#dom-gpudevice-queue
-func (d GPUDevice) Queue() GPUQueue {
-	jsQueue := d.jsValue.Get("queue")
+func (g GPUDevice) Queue() GPUQueue {
+	jsQueue := g.jsValue.Get("queue")
 	return GPUQueue{
 		jsValue: jsQueue,
 	}
@@ -33,8 +33,8 @@ func (d GPUDevice) Queue() GPUQueue {
 
 // CreateCommandEncoder as described:
 // https://gpuweb.github.io/gpuweb/#dom-gpudevice-createcommandencoder
-func (d GPUDevice) CreateCommandEncoder() GPUCommandEncoder {
-	jsEncoder := d.jsValue.Call("createCommandEncoder")
+func (g GPUDevice) CreateCommandEncoder() GPUCommandEncoder {
+	jsEncoder := g.jsValue.Call("createCommandEncoder")
 	return GPUCommandEncoder{
 		jsValue: jsEncoder,
 	}
@@ -46,5 +46,14 @@ func (g GPUDevice) CreateBuffer(descriptor GPUBufferDescriptor) GPUBuffer {
 	jsBuffer := g.jsValue.Call("createBuffer", descriptor.ToJS())
 	return GPUBuffer{
 		jsValue: jsBuffer,
+	}
+}
+
+// CreateShaderModule as described:
+// https://gpuweb.github.io/gpuweb/#dom-gpudevice-createshadermodule
+func (g GPUDevice) CreateShaderModule(desc GPUShaderModuleDescriptor) GPUShaderModule {
+	jsShader := g.jsValue.Call("createShaderModule", desc.ToJS())
+	return GPUShaderModule{
+		jsValue: jsShader,
 	}
 }
