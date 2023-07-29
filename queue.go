@@ -26,3 +26,10 @@ func (g GPUQueue) Submit(commandBuffers []GPUCommandBuffer) {
 	})
 	g.jsValue.Call("submit", jsSequence)
 }
+
+// WriteBuffer as described:
+// https://gpuweb.github.io/gpuweb/#dom-gpuqueue-writebuffer
+func (g GPUQueue) WriteBuffer(buffer GPUBuffer, offset uint64, data []byte) {
+	dataSize := stageBufferData(data)
+	g.jsValue.Call("writeBuffer", buffer.jsValue, offset, uint8Array, uint64(0), dataSize)
+}

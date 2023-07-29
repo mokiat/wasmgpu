@@ -39,3 +39,12 @@ func (d GPUDevice) CreateCommandEncoder() GPUCommandEncoder {
 		jsValue: jsEncoder,
 	}
 }
+
+// CreateBuffer as described:
+// https://gpuweb.github.io/gpuweb/#dom-gpudevice-createbuffer
+func (g GPUDevice) CreateBuffer(descriptor GPUBufferDescriptor) GPUBuffer {
+	jsBuffer := g.jsValue.Call("createBuffer", descriptor.ToJS())
+	return GPUBuffer{
+		jsValue: jsBuffer,
+	}
+}

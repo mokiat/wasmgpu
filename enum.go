@@ -87,3 +87,26 @@ const (
 	GPUVertexFormatSint32x3  GPUVertexFormat = "sint32x3"
 	GPUVertexFormatSint32x4  GPUVertexFormat = "sint32x4"
 )
+
+// GPUBufferUsageFlags as described:
+// https://gpuweb.github.io/gpuweb/#typedefdef-gpubufferusageflags
+type GPUBufferUsageFlags GPUFlagsConstant
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUBufferUsageFlags) ToJS() any {
+	return uint32(g)
+}
+
+const (
+	GPUBufferUsageFlagsMapRead      GPUBufferUsageFlags = 0x0001
+	GPUBufferUsageFlagsMapWrite     GPUBufferUsageFlags = 0x0002
+	GPUBufferUsageFlagsCopySrc      GPUBufferUsageFlags = 0x0004
+	GPUBufferUsageFlagsCopyDst      GPUBufferUsageFlags = 0x0008
+	GPUBufferUsageFlagsIndex        GPUBufferUsageFlags = 0x0010
+	GPUBufferUsageFlagsVertex       GPUBufferUsageFlags = 0x0020
+	GPUBufferUsageFlagsUniform      GPUBufferUsageFlags = 0x0040
+	GPUBufferUsageFlagsStorage      GPUBufferUsageFlags = 0x0080
+	GPUBufferUsageFlagsIndirect     GPUBufferUsageFlags = 0x0100
+	GPUBufferUsageFlagsQueryResolve GPUBufferUsageFlags = 0x0200
+)

@@ -54,3 +54,13 @@ type GPUColor struct {
 func (g GPUColor) ToJS() any {
 	return []any{g.R, g.G, g.B, g.A}
 }
+
+// GPUFlagsConstant as described:
+// https://gpuweb.github.io/gpuweb/#typedefdef-gpuflagsconstant
+type GPUFlagsConstant uint32
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUFlagsConstant) ToJS() any {
+	return uint32(g)
+}
