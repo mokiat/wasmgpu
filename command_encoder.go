@@ -16,8 +16,8 @@ func (g GPUCommandEncoder) ToJS() any {
 
 // BeginRenderPass as described:
 // https://gpuweb.github.io/gpuweb/#dom-gpucommandencoder-beginrenderpass
-func (g GPUCommandEncoder) BeginRenderPass(desc GPURenderPassDescriptor) GPURenderPassEncoder {
-	jsRenderPass := g.jsValue.Call("beginRenderPass", desc.ToJS())
+func (g GPUCommandEncoder) BeginRenderPass(descriptor GPURenderPassDescriptor) GPURenderPassEncoder {
+	jsRenderPass := g.jsValue.Call("beginRenderPass", descriptor.ToJS())
 	return GPURenderPassEncoder{
 		jsValue: jsRenderPass,
 	}
