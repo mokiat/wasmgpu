@@ -10,7 +10,7 @@ in wasm projects.
 
 You need to add the project as a dependency.
 
-```
+```sh
 go get github.com/mokiat/wasmgpu@latest
 ```
 
@@ -81,7 +81,7 @@ from your page's JavaScript.
     <script type="text/javascript" src="wasm_exec.js"></script>
   </head>
   <body>
-    <canvas id="screen" tabindex="1" width="512" height="512"></canvas>
+    <canvas width="512" height="512"></canvas>
     <script type="module">
       // Prepare a Canvas with WebGPU support.
       if (!navigator.gpu) {
