@@ -93,3 +93,12 @@ func (g GPUDevice) CreatePipelineLayout(descriptor GPUPipelineLayoutDescriptor) 
 		jsValue: jsLayout,
 	}
 }
+
+// CreateComputePipeline as described:
+// https://gpuweb.github.io/gpuweb/#dom-gpudevice-createcomputepipeline
+func (g GPUDevice) CreateComputePipeline(descriptor GPUComputePipelineDescriptor) GPUComputePipeline {
+	jsPipeline := g.jsValue.Call("createComputePipeline", descriptor.ToJS())
+	return GPUComputePipeline{
+		jsValue: jsPipeline,
+	}
+}

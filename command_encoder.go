@@ -1,6 +1,10 @@
 package wasmgpu
 
-import "syscall/js"
+import (
+	"syscall/js"
+
+	"github.com/mokiat/gog/opt"
+)
 
 // GPUCommandEncoder as described:
 // https://gpuweb.github.io/gpuweb/#gpucommandencoder
@@ -20,6 +24,21 @@ func (g GPUCommandEncoder) BeginRenderPass(descriptor GPURenderPassDescriptor) G
 	jsRenderPass := g.jsValue.Call("beginRenderPass", descriptor.ToJS())
 	return GPURenderPassEncoder{
 		jsValue: jsRenderPass,
+	}
+}
+
+// BeginComputePass as described:
+// https://gpuweb.github.io/gpuweb/#dom-gpucommandencoder-begincomputepass
+func (g GPUCommandEncoder) BeginComputePass(descriptor opt.T[GPUComputePassDescriptor]) GPUComputePassEncoder {
+	params := make([]any, 1)
+	if descriptor.Specified {
+		params[0] = descriptor.Value.ToJS()
+	} else {
+		params[0] = js.Undefined()
+	}
+	jsComputePass := g.jsValue.Call("beginComputePass", params...)
+	return GPUComputePassEncoder{
+		jsValue: jsComputePass,
 	}
 }
 
