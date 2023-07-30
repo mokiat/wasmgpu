@@ -329,6 +329,15 @@ type GPURenderPipeline struct {
 	jsValue js.Value
 }
 
+// GetBindGroupLayout as described:
+// https://gpuweb.github.io/gpuweb/#dom-gpupipelinebase-getbindgrouplayout
+func (g GPURenderPipeline) GetBindGroupLayout(index uint32) GPUBindGroupLayout {
+	jsLayout := g.jsValue.Call("getBindGroupLayout", index)
+	return GPUBindGroupLayout{
+		jsValue: jsLayout,
+	}
+}
+
 // ToJS converts this type to one that can be passed as an argument
 // to JavaScript.
 func (g GPURenderPipeline) ToJS() any {

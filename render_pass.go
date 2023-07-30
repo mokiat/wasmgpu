@@ -86,6 +86,18 @@ func (g GPURenderPassEncoder) SetVertexBuffer(slot GPUIndex32, vertexBuffer GPUB
 	g.jsValue.Call("setVertexBuffer", params...)
 }
 
+// SetBindGroup as described:
+// https://gpuweb.github.io/gpuweb/#gpubindingcommandsmixin-setbindgroup
+func (g GPURenderPassEncoder) SetBindGroup(index GPUIndex32, bindGroup GPUBindGroup, dynamicOffsets []GPUBufferDynamicOffset) {
+	params := make([]any, 3)
+	params[0] = index.ToJS()
+	params[1] = bindGroup.ToJS()
+	params[2] = gog.Map(dynamicOffsets, func(offset GPUBufferDynamicOffset) any {
+		return offset.ToJS()
+	})
+	g.jsValue.Call("setBindGroup", params...)
+}
+
 // Draw as described:
 // https://gpuweb.github.io/gpuweb/#dom-gpurendercommandsmixin-draw
 func (g GPURenderPassEncoder) Draw(vertexCount GPUSize32, instanceCount, firstVertex, firstInstance opt.T[GPUSize32]) {

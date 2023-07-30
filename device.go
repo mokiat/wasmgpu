@@ -66,3 +66,12 @@ func (g GPUDevice) CreateRenderPipeline(descriptor GPURenderPipelineDescriptor) 
 		jsValue: jsPipeline,
 	}
 }
+
+// CreateBindGroup as described:
+// https://gpuweb.github.io/gpuweb/#dom-gpudevice-createbindgroup
+func (g GPUDevice) CreateBindGroup(descriptor GPUBindGroupDescriptor) GPUBindGroup {
+	jsBindGroup := g.jsValue.Call("createBindGroup", descriptor.ToJS())
+	return GPUBindGroup{
+		jsValue: jsBindGroup,
+	}
+}

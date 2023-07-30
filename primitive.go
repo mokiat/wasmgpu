@@ -1,5 +1,15 @@
 package wasmgpu
 
+// GPUBufferDynamicOffset as described:
+// https://gpuweb.github.io/gpuweb/#typedefdef-gpubufferdynamicoffset
+type GPUBufferDynamicOffset uint32
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUBufferDynamicOffset) ToJS() any {
+	return uint32(g)
+}
+
 // GPUSize64 as described:
 // https://gpuweb.github.io/gpuweb/#typedefdef-gpusize64
 type GPUSize64 uint64
