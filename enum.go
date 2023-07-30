@@ -340,3 +340,102 @@ const (
 	GPUStencilOperationIncrementWrap  GPUStencilOperation = "increment-wrap"
 	GPUStencilOperationDecrementWrap  GPUStencilOperation = "decrement-wrap"
 )
+
+// GPUShaderStageFlags as described:
+// https://gpuweb.github.io/gpuweb/#typedefdef-gpushaderstageflags
+type GPUShaderStageFlags GPUFlagsConstant
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUShaderStageFlags) ToJS() any {
+	return uint32(g)
+}
+
+const (
+	GPUShaderStageFlagsVertex   GPUShaderStageFlags = 0x1
+	GPUShaderStageFlagsFragment GPUShaderStageFlags = 0x2
+	GPUShaderStageFlagsCompute  GPUShaderStageFlags = 0x4
+)
+
+// GPUBufferBindingType as described:
+// https://gpuweb.github.io/gpuweb/#enumdef-gpubufferbindingtype
+type GPUBufferBindingType string
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUBufferBindingType) ToJS() any {
+	return string(g)
+}
+
+const (
+	GPUBufferBindingTypeUniform         GPUBufferBindingType = "uniform"
+	GPUBufferBindingTypeStorage         GPUBufferBindingType = "storage"
+	GPUBufferBindingTypeReadOnlyStorage GPUBufferBindingType = "read-only-storage"
+)
+
+// GPUSamplerBindingType as described:
+// https://gpuweb.github.io/gpuweb/#enumdef-gpusamplerbindingtype
+type GPUSamplerBindingType string
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUSamplerBindingType) ToJS() any {
+	return string(g)
+}
+
+const (
+	GPUSamplerBindingTypeFiltering    GPUSamplerBindingType = "filtering"
+	GPUSamplerBindingTypeNonFiltering GPUSamplerBindingType = "non-filtering"
+	GPUSamplerBindingTypeComparison   GPUSamplerBindingType = "comparison"
+)
+
+// GPUTextureSampleType as described:
+// https://gpuweb.github.io/gpuweb/#enumdef-gputexturesampletype
+type GPUTextureSampleType string
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUTextureSampleType) ToJS() any {
+	return string(g)
+}
+
+const (
+	GPUTextureSampleTypeFloat             GPUTextureSampleType = "float"
+	GPUTextureSampleTypeUnfilterableFloat GPUTextureSampleType = "unfilterable-float"
+	GPUTextureSampleTypeDepth             GPUTextureSampleType = "depth"
+	GPUTextureSampleTypeSint              GPUTextureSampleType = "sint"
+	GPUTextureSampleTypeUint              GPUTextureSampleType = "uint"
+)
+
+// GPUTextureViewDimension as described:
+// https://gpuweb.github.io/gpuweb/#enumdef-gputextureviewdimension
+type GPUTextureViewDimension string
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUTextureViewDimension) ToJS() any {
+	return string(g)
+}
+
+const (
+	GPUTextureViewDimension1D        GPUTextureViewDimension = "1d"
+	GPUTextureViewDimension2D        GPUTextureViewDimension = "2d"
+	GPUTextureViewDimension2DArray   GPUTextureViewDimension = "2d-array"
+	GPUTextureViewDimensionCube      GPUTextureViewDimension = "cube"
+	GPUTextureViewDimensionCubeArray GPUTextureViewDimension = "cube-array"
+	GPUTextureViewDimension3D        GPUTextureViewDimension = "3d"
+)
+
+// GPUStorageTextureAccess as described:
+// https://gpuweb.github.io/gpuweb/#enumdef-gpustoragetextureaccess
+type GPUStorageTextureAccess string
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUStorageTextureAccess) ToJS() any {
+	return string(g)
+}
+
+const (
+	GPUStorageTextureAccessWriteOnly GPUStorageTextureAccess = "write-only"
+)

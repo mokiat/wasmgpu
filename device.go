@@ -75,3 +75,21 @@ func (g GPUDevice) CreateBindGroup(descriptor GPUBindGroupDescriptor) GPUBindGro
 		jsValue: jsBindGroup,
 	}
 }
+
+// CreateBindGroupLayout as described:
+// https://gpuweb.github.io/gpuweb/#dom-gpudevice-createbindgrouplayout
+func (g GPUDevice) CreateBindGroupLayout(descriptor GPUBindGroupLayoutDescriptor) GPUBindGroupLayout {
+	jsLayout := g.jsValue.Call("createBindGroupLayout", descriptor.ToJS())
+	return GPUBindGroupLayout{
+		jsValue: jsLayout,
+	}
+}
+
+// CreatePipelineLayout as described:
+// https://gpuweb.github.io/gpuweb/#dom-gpudevice-createpipelinelayout
+func (g GPUDevice) CreatePipelineLayout(descriptor GPUPipelineLayoutDescriptor) GPUPipelineLayout {
+	jsLayout := g.jsValue.Call("createPipelineLayout", descriptor.ToJS())
+	return GPUPipelineLayout{
+		jsValue: jsLayout,
+	}
+}

@@ -7,6 +7,22 @@ import (
 	"github.com/mokiat/gog/opt"
 )
 
+// GPUPipelineLayoutDescriptor as described:
+// https://gpuweb.github.io/gpuweb/#dictdef-gpupipelinelayoutdescriptor
+type GPUPipelineLayoutDescriptor struct {
+	BindGroupLayouts []GPUBindGroupLayout
+}
+
+// ToJS converts this type to one that can be passed as an argument
+// to JavaScript.
+func (g GPUPipelineLayoutDescriptor) ToJS() any {
+	return map[string]any{
+		"bindGroupLayouts": gog.Map(g.BindGroupLayouts, func(layout GPUBindGroupLayout) any {
+			return layout.ToJS()
+		}),
+	}
+}
+
 // GPUPipelineLayout as described:
 // https://gpuweb.github.io/gpuweb/#gpupipelinelayout
 type GPUPipelineLayout struct {
