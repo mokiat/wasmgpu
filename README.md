@@ -21,8 +21,6 @@ If you are unfamiliar with how Go and WASM works, then you should have a look at
 the official [WebAssembly with Go documentation](https://github.com/golang/go/wiki/WebAssembly).
 
 
-### Example
-
 Following is an example Go code that clears the canvas with a green color.
 
 ```go
@@ -125,6 +123,30 @@ from your page's JavaScript.
   </body>
 </html>
 ```
+
+## Demo
+
+The project includes a working Demo based on
+[Google's Codelab Tutorial](https://codelabs.developers.google.com/your-first-webgpu-app#0).
+
+You can check it live on the [GitHub page](https://mokiat.com/wasmgpu/) of this project.
+Alternatively, you can run it yourself. It is located in the `demo` folder of the repository.
+
+Run the following script to build the WASM file.
+
+```sh
+demo/build
+```
+
+Run the following script to run an HTTP server to host the `demo/web` folder.
+
+```sh
+demo/run
+```
+
+Next, open `http://localhost:8080` with a browser that supports WebGPU.
+You should see the Demo running.
+
 
 ## Extending the API
 

@@ -1,0 +1,7 @@
+#!/bin/bash -e
+
+script_dir="$(dirname -- "${BASH_SOURCE[0]}")"
+(
+  cd "$script_dir"
+  go run 'github.com/mokiat/httpserv@v1.0.0' -dir './web'
+)

@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+script_dir="$(dirname -- "${BASH_SOURCE[0]}")"
+(
+  cd "$script_dir"
+  cp "$(go env GOROOT)/misc/wasm/wasm_exec.js" 'web'
+  GOOS=js GOARCH=wasm go build -o 'web/main.wasm' './'
+)

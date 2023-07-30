@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Game of Life using WebGPU with Go and WebAssembly"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Game of Life</title>
+    <script type="text/javascript" src="wasm_exec.js"></script>
+  </head>
+  <body>
+    <canvas width="512" height="512"></canvas>
+    <script type="module">
+      // Request WebGPU access.
+      if (!navigator.gpu) throw new Error("WebGPU not suppored :(");
+      const adapter = await navigator.gpu.requestAdapter({
+        powerPreference: "high-performance",
+      });
+      if (!adapter) throw new Error("No WebGPU adapter available :(");
+      const device = await adapter.requestDevice();
+      if (!device) throw new Error("No Device available :(");
+
+      // Prepare the Canvas for WebGPU rendering.
+      const canvas = document.querySelector("canvas");
+      const context = canvas.getContext("webgpu");
+      const canvasFormat = navigator.gpu.getPreferredCanvasFormat();
+      context.configure({
+        device: device,
+        format: canvasFormat,
+      });
+
+      // The following functions are needed by the Go code to get access
+      // to the context and device.
+      window.getDevice = () => {
+        return device;
+      };
+      window.getContext = () => {
+        return context;
+      };
+
+      // This is the standard code to get WebAssembly going with Go.
+      const go = new Go();
+      const result = await WebAssembly.instantiateStreaming(
+        fetch("main.wasm"),
+        go.importObject
+      );
+      await go.run(result.instance);
+    </script>
+  </body>
+</html>
